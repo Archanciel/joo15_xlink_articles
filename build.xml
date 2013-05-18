@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="plusconscient.net" basedir="." default="build_install_zip">
+
+	<property name="artifact.name" value="xlink_articles" />
+	<property name="joomla.root"
+		value="C:\Development\WorkPHP\www\plusconscient15_dev" />
+	<!-- <property name="src" value="${joomla.root}\plugins\${artifact.name}" 
+		/> -->
+	<property name="src" value="${joomla.root}\plugins\${artifact.name}" />
+	<property name="install.zip.file.dest"
+		value="C:\Development\WorkPHP\www\plusconscient15_int\attachments"
+		override="true" />
+	<property name="version">1.6</property>
+
+	<fileset dir="${src}" id="allfiles">
+		<include name="*.php" />
+		<include name="${artifact.name}.xml" />
+		<include name="index.html" />
+	</fileset>
+
+	<fileset dir="${joomla.root}/administrator" id="languages">
+		<include name="language/en-GB/en-GB.plg_xlink_articles_${artifact.name}.ini" />
+		<include name="language/en-GB/en-GB.plg_xlink_articles_${artifact.name}.sys.ini" />
+		<include name="language/fr-FR/fr-FR.plg_xlink_articles_${artifact.name}.ini" />
+		<include name="language/fr-FR/fr-FR.plg_xlink_articles_${artifact.name}.sys.ini" />
+	</fileset>
+
+	<!-- Copy Target -->
+	<target name="build_install_zip" description="build the install zip">
+		<delete file="${install.zip.file.dest}/plg_${artifact.name}_${version}.zip" />
+		<zip destfile="${install.zip.file.dest}/plg_${artifact.name}_${version}.zip">
+			<fileset refid="allfiles" />
+			<fileset refid="languages" />
+		</zip>
+	</target>
+</project>
