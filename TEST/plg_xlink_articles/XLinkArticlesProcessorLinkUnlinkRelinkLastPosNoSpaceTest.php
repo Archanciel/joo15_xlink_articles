@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
-require_once JPATH_BASE . '\plugins\xlink_articles\xlink_articles_processor.php';
+require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
 class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArticlesTestBase {
 	

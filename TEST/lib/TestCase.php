@@ -21,7 +21,7 @@ require_once 'PHPUnit' . DS . 'Extensions' . DS . 'Database' . DS . 'DataSet' . 
 //require_once 'PHPUnit\Extensions\Database\TestCase.php';
 //require_once 'PHPUnit\Extensions\Database\DataSet\XmlDataSet.php';
 
-define ( 'JPATH_BASE', dirname ( dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) ) );
+define ( 'JPATH_BASE', dirname ( dirname ( dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) ) ) );
 define ( 'JPATH_ROOT', JPATH_BASE );
 define ( 'JPATH_ADMINISTRATOR', JPATH_BASE . DS . 'administrator' );
 define ( 'JPATH_CONFIGURATION', JPATH_BASE );

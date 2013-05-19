@@ -6,7 +6,15 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 jimport ( 'joomla.plugin.plugin' );
 jimport ( 'joomla.error.log' );
 
-require_once (dirname(__FILE__) . DS . 'xlink_articles_processor.php');
+$processorFilePath = dirname(__FILE__) . DS . 'xlink_articles_processor.php';
+
+if (file_exists($processorFilePath)) {
+	// execution in context of PHPUnit tests execution
+	require_once ($processorFilePath);
+} else {
+	// execution triggered by Joomla 1.5
+	require_once (dirname(__FILE__) . DS . 'xlink_articles' . DS . 'xlink_articles_processor.php');
+}
 
 /**
  * This plugin fires when an article is saved. Provided "@Ecouter également " (NOTE THE @ !)

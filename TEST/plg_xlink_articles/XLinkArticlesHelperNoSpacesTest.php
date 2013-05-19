@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
-require_once JPATH_BASE . '\plugins\xlink_articles\helper.php';
+require_once PLG_XLINK_ARTICLES_PATH . '\helper.php';
 
 class XLinkArticlesHelperNoSpacesTest extends XLinkArticlesTestBase {
 	

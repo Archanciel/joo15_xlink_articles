@@ -6,7 +6,7 @@
 		value="C:\Development\WorkPHP\www\plusconscient15_dev" />
 	<!-- <property name="src" value="${joomla.root}\plugins\${artifact.name}" 
 		/> -->
-	<property name="src" value="${joomla.root}\plugins\${artifact.name}" />
+	<property name="src" value="${joomla.root}\plugins\content/${artifact.name}" />
 	<property name="install.zip.file.dest"
 		value="C:\Development\WorkPHP\www\plusconscient15_int\attachments"
 		override="true" />

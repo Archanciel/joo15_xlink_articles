@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="1.6" type="plugin" group="xlink_articles">
-	<name>XLinkArticles</name>
+<install version="1.6" type="plugin" group="content">
+	<name>Content - XLinkArticles</name>
 	<author>Jean-Pierre Schnyder</author>
 	<creationDate>July 2011</creationDate>
 	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
