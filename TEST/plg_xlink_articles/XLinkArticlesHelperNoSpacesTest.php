@@ -190,7 +190,7 @@ class XLinkArticlesHelperNoSpacesTest extends XLinkArticlesTestBase {
 	}
 		
 	public function testGetLinkSectionComponentsWhereNoLinkSection() {
-		JPlugin::loadLanguage( 'plg_xlink_articles_xlink_articles', JPATH_ADMINISTRATOR);
+		JPlugin::loadLanguage( 'plg_content_xlink_articles', JPATH_ADMINISTRATOR);
 		$targetArticle_H = JTable::getInstance ( 'content' );
 		$targetArticle_H->load ( 8 );
 		$components = XLinkArticlesHelper::getLinkSectionComponents($targetArticle_H, $this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, "No change performed", $this->userMessageArray);

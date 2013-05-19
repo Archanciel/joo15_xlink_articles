@@ -19,8 +19,8 @@
 	</files>
 
     <languages>
-		<language tag="en-GB">language/en-GB/en-GB.plg_xlink_articles_xlink_articles.ini</language>
-		<language tag="fr-FR">language/fr-FR/fr-FR.plg_xlink_articles_xlink_articles.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_xlink_articles.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.plg_content_xlink_articles.ini</language>
     </languages>
 	<params>
 		<param name="link_section_tag" type="text" default="Ecouter également" label="LINK_SECTION_TAG_LBL" description="LINK_SECTION_TAG_DESC"/>

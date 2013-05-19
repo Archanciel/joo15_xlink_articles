@@ -39,7 +39,7 @@ class XlinkArticlesProcessor {
 		$this->isSpaceAddedlinkSeparator = $isSpaceAddedlinkSeparator;
 		$this->linkAddDefPos = $linkAddDefPos;
 
-		JPlugin::loadLanguage( 'plg_xlink_articles_xlink_articles', JPATH_ADMINISTRATOR);
+		JPlugin::loadLanguage( 'plg_content_xlink_articles', JPATH_ADMINISTRATOR);
 	}
 
 	/**

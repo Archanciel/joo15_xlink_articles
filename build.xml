@@ -19,10 +19,10 @@
 	</fileset>
 
 	<fileset dir="${joomla.root}/administrator" id="languages">
-		<include name="language/en-GB/en-GB.plg_xlink_articles_${artifact.name}.ini" />
-		<include name="language/en-GB/en-GB.plg_xlink_articles_${artifact.name}.sys.ini" />
-		<include name="language/fr-FR/fr-FR.plg_xlink_articles_${artifact.name}.ini" />
-		<include name="language/fr-FR/fr-FR.plg_xlink_articles_${artifact.name}.sys.ini" />
+		<include name="language/en-GB/en-GB.plg_content_${artifact.name}.ini" />
+		<include name="language/en-GB/en-GB.plg_content_${artifact.name}.sys.ini" />
+		<include name="language/fr-FR/fr-FR.plg_content_${artifact.name}.ini" />
+		<include name="language/fr-FR/fr-FR.plg_content_${artifact.name}.sys.ini" />
 	</fileset>
 
 	<!-- Copy Target -->
