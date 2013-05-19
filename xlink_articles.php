@@ -61,7 +61,7 @@ class plgContentXLink_articles extends JPlugin {
 	public function onAfterContentSave($article, $isNew) {
 		// obtaining plugin parms
 
-		$plugin = JPluginHelper::getPlugin ( 'xlink_articles', 'xlink_articles' );
+		$plugin = JPluginHelper::getPlugin ( 'content', 'xlink_articles' );
 		$pluginParams = new JParameter ( $plugin->params );
 
 		$linkSectionStartString = trim($pluginParams->get('link_section_tag'));
