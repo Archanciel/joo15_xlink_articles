@@ -12,7 +12,7 @@
 		This plugin inserts/removes a link to the saved article in all the articles referenced in the link section of the saved article. 
 		The link is inserted at the beginning or at the end of the link section list, according to the plugin setup.
 		<p/>
-		WARNING: the plugin requires the activation of the System Mootools Upgrade plugin to work properly !</description>
+		WARNING: In Joomla 1.5, the plugin requires the activation of the System Mootools Upgrade plugin to work properly !</description>
 	<files>
 		<filename plugin="xlink_articles">xlink_articles.php</filename>
 		<folder>xlink_articles/</folder>
