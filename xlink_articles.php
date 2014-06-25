@@ -13,7 +13,7 @@ if (file_exists($processorFilePath)) {
 	require_once ($processorFilePath);
 } else {
 	// execution triggered by Joomla 1.5
-	require_once (dirname(__FILE__) . DS . 'xlink_articles' . DS . 'xlink_articles_processor.php');
+	require_once (dirname(__FILE__) . DS . 'plg_xlink_articles' . DS . 'xlink_articles_processor.php');
 }
 
 /**
