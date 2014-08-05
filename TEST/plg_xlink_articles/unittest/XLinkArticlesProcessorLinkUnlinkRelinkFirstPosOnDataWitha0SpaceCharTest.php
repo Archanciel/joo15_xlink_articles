@@ -1,9 +1,9 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
-class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArticlesTestBase {
+class XLinkArticlesProcessorLinkUnlinkRelinkFirstPosOnDataWitha0SpaceCharTest extends XLinkArticlesTestBase {
 	
 	private $linkSectionStartString;
 	private $isSpaceAddedlinkSectionStartString;
@@ -13,14 +13,14 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 	public function setUp() {
 		parent::setUp ();
 		
-		$this->linkSectionStartString = "Ecouter également:";
-		$this->isSpaceAddedlinkSectionStartString = 0;
+		$this->linkSectionStartString = "Ecouter également";
+		$this->isSpaceAddedlinkSectionStartString = 1;
 		$this->linkSeparator = ",";
-		$this->isSpaceAddedlinkSeparator = 0;
+		$this->isSpaceAddedlinkSeparator = 1;
 	}
 	
-	public function testProcessArticleXLinksIntegrationAtPosLastLinkUnlinkRelink() {
-		$linkAddDefPos = 1;	// 0 == position first
+	public function testProcessArticleXLinksIntegrationAtPosFirstLinkUnlinkRelink() {
+		$linkAddDefPos = 0;	// 0 == position first
 		$xLinkProcessor = new XlinkArticlesProcessor ($this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, $this->linkSeparator, $this->isSpaceAddedlinkSeparator, $linkAddDefPos);
 		
 		$sourceArticle_A_LK = JTable::getInstance ( 'content' );
@@ -30,7 +30,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 		
 		$xLinkProcessor->processArticleXLinks ( $sourceArticle_A_LK );
 		
-		$this->checkLastPosLinksAfterLK($xLinkProcessor, $sourceArticle_A_LK);
+		$this->checkFirstPosLinksAfterLK($xLinkProcessor, $sourceArticle_A_LK);
 		
 		// replacing LK by ULK in article A introtext
 		
@@ -43,7 +43,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 		$xLinkProcessor = new XlinkArticlesProcessor ($this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, $this->linkSeparator, $this->isSpaceAddedlinkSeparator, $linkAddDefPos);
 		$xLinkProcessor->processArticleXLinks ( $sourceArticle_A_LK );
 		
-		$this->checkLastPosLinksAfterULK($xLinkProcessor, $sourceArticle_A_LK);	
+		$this->checkFirstPosLinksAfterULK($xLinkProcessor, $sourceArticle_A_LK);	
 		
 		// replacing ULK by LK in article A introtext
 		
@@ -56,10 +56,10 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 		$xLinkProcessor = new XlinkArticlesProcessor ($this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, $this->linkSeparator, $this->isSpaceAddedlinkSeparator, $linkAddDefPos);
 		$xLinkProcessor->processArticleXLinks ( $sourceArticle_A_LK );
 		
-		$this->checkLastPosLinksAfterLK($xLinkProcessor, $sourceArticle_A_LK);		
+		$this->checkFirstPosLinksAfterLK($xLinkProcessor, $sourceArticle_A_LK);		
 	}
 	
-	private function checkLastPosLinksAfterLK($xLinkProcessor, $sourceArticle_A) {
+	private function checkFirstPosLinksAfterLK($xLinkProcessor, $sourceArticle_A) {
 		/*
 		 *  targetArticle_B
 		*/
@@ -71,7 +71,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 	
@@ -86,7 +86,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 	
@@ -101,7 +101,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 	
@@ -128,7 +128,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 		$this->assertEquals ( "=== Cross-link already exists in 2 - B. No change performed !", $userMessageArray[2], '$userMessageArray[2]' );
 	}
 	
-	private function checkLastPosLinksAfterULK($xLinkProcessor, $sourceArticle_A) {
+	private function checkFirstPosLinksAfterULK($xLinkProcessor, $sourceArticle_A) {
 		/*
 		 *  targetArticle_B
 		*/
@@ -140,7 +140,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:</p>\n" .
+				"<p>Ecouter également</p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 	
@@ -155,7 +155,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 	
@@ -170,7 +170,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 	
@@ -203,7 +203,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArti
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\test_no_space_link_unlink_relink.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\test_alternate_a0_space_char_link_unlink_relink.xml' );
 	}
 }
 

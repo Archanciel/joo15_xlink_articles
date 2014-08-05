@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\..\lib\TestCase.php';
+require_once dirname ( __FILE__ ) . '\..\..\lib\TestCase.php';
 
 define('PLG_XLINK_ARTICLES_PATH', JPATH_BASE . '\plugins\content\plg_xlink_articles');
 

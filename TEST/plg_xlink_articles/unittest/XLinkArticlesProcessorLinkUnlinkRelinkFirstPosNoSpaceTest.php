@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
 class XLinkArticlesProcessorLinkUnlinkRelinkFirstPosNoSpaceTest extends XLinkArticlesTestBase {
@@ -203,7 +203,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkFirstPosNoSpaceTest extends XLinkArt
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\test_no_space_link_unlink_relink.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\test_no_space_link_unlink_relink.xml' );
 	}
 }
 

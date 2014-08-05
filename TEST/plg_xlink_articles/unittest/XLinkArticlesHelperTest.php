@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\helper.php';
 
 class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
@@ -207,7 +207,7 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\xlink_articles_test_data.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\xlink_articles_test_data.xml' );
 	}
 }
 

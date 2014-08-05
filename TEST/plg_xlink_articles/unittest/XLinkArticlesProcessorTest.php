@@ -1,9 +1,9 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
-class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
+class XLinkArticlesProcessorTest extends XLinkArticlesTestBase {
 	
 	private $linkSectionStartString;
 	private $isSpaceAddedlinkSectionStartString;
@@ -13,10 +13,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 	public function setUp() {
 		parent::setUp ();
 		
-		$this->linkSectionStartString = "Ecouter également:";
-		$this->isSpaceAddedlinkSectionStartString = 0;
+		$this->linkSectionStartString = "Ecouter également";
+		$this->isSpaceAddedlinkSectionStartString = 1;
 		$this->linkSeparator = ",";
-		$this->isSpaceAddedlinkSeparator = 0;
+		$this->isSpaceAddedlinkSeparator = 1;
 	}
 	
 	public function testProcessArticleXLinksIntegrationAddLinksAtPosFirst() {
@@ -39,7 +39,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 				
@@ -54,7 +54,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 		
@@ -69,7 +69,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 		
@@ -112,7 +112,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_J, $targetArticle_J->introtext, '$targetArticle_J->introtext' );
 
@@ -127,7 +127,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:</p>\n" .
+						"<p>Ecouter également</p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_K, $targetArticle_K->introtext, '$targetArticle_K->introtext' );
 		
@@ -142,7 +142,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_G, $targetArticle_G->introtext, '$targetArticle_G->introtext' );
 		
@@ -157,7 +157,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_F, $targetArticle_F->introtext, '$targetArticle_F->introtext' );
 		
@@ -170,13 +170,13 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$this->assertEquals ( 12 , count ( $userMessageArray), 'count ( $userMessageArray)' );
 
 		$this->assertEquals ( "=== Cross-link already exists in 10 - J. No change performed !", $userMessageArray[0], '$userMessageArray[0]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
 		$this->assertEquals ( "+++ Cross-link added to 4 - D", $userMessageArray[2], '$userMessageArray[2]' );
 		$this->assertEquals ( "+++ Cross-link added to 3 - C", $userMessageArray[3], '$userMessageArray[3]' );
 		$this->assertEquals ( "+++ Cross-link added to 2 - B", $userMessageArray[4], '$userMessageArray[4]' );
 		$this->assertEquals ( "!!! Link on article 13 invalid since id 13 not found in DB !", $userMessageArray[5], '$userMessageArray[5]' );
 		$this->assertEquals ( "---- Cross-link removed from 11 - K", $userMessageArray[6], '$userMessageArray[6]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
 		$this->assertEquals ( "---- Cross-link removed from 7 - G", $userMessageArray[8], '$userMessageArray[8]' );
 		$this->assertEquals ( "---- Cross-link removed from 6 - F", $userMessageArray[9], '$userMessageArray[9]' );
 		$this->assertEquals ( "=== Cross-link not found in 5 - E. No change performed !", $userMessageArray[10], '$userMessageArray[10]' );
@@ -189,13 +189,13 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$userMessageArray = $xLinkProcessor->getUserMessageArray ();
 
 		$this->assertEquals ( "=== Cross-link already exists in 10 - J. No change performed !", $userMessageArray[0], '$userMessageArray[0]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
 		$this->assertEquals ( "=== Cross-link already exists in 4 - D. No change performed !", $userMessageArray[2], '$userMessageArray[2]' );
 		$this->assertEquals ( "=== Cross-link already exists in 3 - C. No change performed !", $userMessageArray[3], '$userMessageArray[3]' );
 		$this->assertEquals ( "=== Cross-link already exists in 2 - B. No change performed !", $userMessageArray[4], '$userMessageArray[4]' );
 		$this->assertEquals ( "!!! Link on article 13 invalid since id 13 not found in DB !", $userMessageArray[5], '$userMessageArray[5]' );
 		$this->assertEquals ( "=== Cross-link not found in 11 - K. No change performed !", $userMessageArray[6], '$userMessageArray[6]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
 		$this->assertEquals ( "=== Cross-link not found in 7 - G. No change performed !", $userMessageArray[8], '$userMessageArray[8]' );
 		$this->assertEquals ( "=== Cross-link not found in 6 - F. No change performed !", $userMessageArray[9], '$userMessageArray[9]' );
 		$this->assertEquals ( "=== Cross-link not found in 5 - E. No change performed !", $userMessageArray[10], '$userMessageArray[10]' );
@@ -222,7 +222,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 
@@ -237,7 +237,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 				
@@ -252,7 +252,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 		
@@ -295,7 +295,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_J, $targetArticle_J->introtext, '$targetArticle_J->introtext' );
 
@@ -310,7 +310,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:</p>\n" .
+						"<p>Ecouter également</p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_K, $targetArticle_K->introtext, '$targetArticle_K->introtext' );
 		
@@ -325,7 +325,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_G, $targetArticle_G->introtext, '$targetArticle_G->introtext' );
 		
@@ -340,7 +340,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
+						"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_F, $targetArticle_F->introtext, '$targetArticle_F->introtext' );
 	
@@ -353,13 +353,13 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$this->assertEquals ( 12 , count ( $userMessageArray), 'count ( $userMessageArray)' );
 
 		$this->assertEquals ( "=== Cross-link already exists in 10 - J. No change performed !", $userMessageArray[0], '$userMessageArray[0]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
 		$this->assertEquals ( "+++ Cross-link added to 4 - D", $userMessageArray[2], '$userMessageArray[2]' );
 		$this->assertEquals ( "+++ Cross-link added to 3 - C", $userMessageArray[3], '$userMessageArray[3]' );
 		$this->assertEquals ( "+++ Cross-link added to 2 - B", $userMessageArray[4], '$userMessageArray[4]' );
 		$this->assertEquals ( "!!! Link on article 13 invalid since id 13 not found in DB !", $userMessageArray[5], '$userMessageArray[5]' );
 		$this->assertEquals ( "---- Cross-link removed from 11 - K", $userMessageArray[6], '$userMessageArray[6]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
 		$this->assertEquals ( "---- Cross-link removed from 7 - G", $userMessageArray[8], '$userMessageArray[8]' );
 		$this->assertEquals ( "---- Cross-link removed from 6 - F", $userMessageArray[9], '$userMessageArray[9]' );
 		$this->assertEquals ( "=== Cross-link not found in 5 - E. No change performed !", $userMessageArray[10], '$userMessageArray[10]' );
@@ -372,19 +372,19 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$userMessageArray = $xLinkProcessor->getUserMessageArray ();
 
 		$this->assertEquals ( "=== Cross-link already exists in 10 - J. No change performed !", $userMessageArray[0], '$userMessageArray[0]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. No cross-link inserted in this article !", $userMessageArray[1], '$userMessageArray[1]' );
 		$this->assertEquals ( "=== Cross-link already exists in 4 - D. No change performed !", $userMessageArray[2], '$userMessageArray[2]' );
 		$this->assertEquals ( "=== Cross-link already exists in 3 - C. No change performed !", $userMessageArray[3], '$userMessageArray[3]' );
 		$this->assertEquals ( "=== Cross-link already exists in 2 - B. No change performed !", $userMessageArray[4], '$userMessageArray[4]' );
 		$this->assertEquals ( "!!! Link on article 13 invalid since id 13 not found in DB !", $userMessageArray[5], '$userMessageArray[5]' );
 		$this->assertEquals ( "=== Cross-link not found in 11 - K. No change performed !", $userMessageArray[6], '$userMessageArray[6]' );
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 9 - I. No cross-link removed from this article !", $userMessageArray[7], '$userMessageArray[7]' );
 		$this->assertEquals ( "=== Cross-link not found in 7 - G. No change performed !", $userMessageArray[8], '$userMessageArray[8]' );
 		$this->assertEquals ( "=== Cross-link not found in 6 - F. No change performed !", $userMessageArray[9], '$userMessageArray[9]' );
 		$this->assertEquals ( "=== Cross-link not found in 5 - E. No change performed !", $userMessageArray[10], '$userMessageArray[10]' );
 		$this->assertEquals ( "=== Link on 12 - L skipped. No change performed !", $userMessageArray[11], '$userMessageArray[11]' );
 	}
-
+	
 	public function testProcessArticleXLinksEmptyLinkSectionPosFirst() {
 		$linkAddDefPos = 0;	// 0 == position first
 		$xLinkProcessor = new XlinkArticlesProcessor ($this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, $this->linkSeparator, $this->isSpaceAddedlinkSeparator, $linkAddDefPos);
@@ -420,7 +420,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 	
 		$this->assertEquals ( 1 , count ( $userMessageArray), 'count ( $userMessageArray)' );
 	
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. Cross-link processing not performed !", $userMessageArray[0], '$userMessageArray[0]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. Cross-link processing not performed !", $userMessageArray[0], '$userMessageArray[0]' );
 	}
 	
 	public function testProcessArticleXLinksEmptyLinkSectionPosLast() {
@@ -458,7 +458,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 	
 		$this->assertEquals ( 1 , count ( $userMessageArray), 'count ( $userMessageArray)' );
 	
-		$this->assertEquals ( "!!! 'Ecouter également:' section not found in article 8 - H. Cross-link processing not performed !", $userMessageArray[0], '$userMessageArray[0]' );
+		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. Cross-link processing not performed !", $userMessageArray[0], '$userMessageArray[0]' );
 	}
 	
 	/**
@@ -467,7 +467,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\xlink_articles_no_spaces_test_data.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\xlink_articles_test_data.xml' );
 	}
 }
 

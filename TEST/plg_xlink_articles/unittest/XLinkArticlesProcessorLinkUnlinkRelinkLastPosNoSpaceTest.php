@@ -1,9 +1,9 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
-class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest extends XLinkArticlesTestBase {
+class XLinkArticlesProcessorLinkUnlinkRelinkLastPosNoSpaceTest extends XLinkArticlesTestBase {
 	
 	private $linkSectionStartString;
 	private $isSpaceAddedlinkSectionStartString;
@@ -13,10 +13,10 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 	public function setUp() {
 		parent::setUp ();
 		
-		$this->linkSectionStartString = "Ecouter également";
-		$this->isSpaceAddedlinkSectionStartString = 1;
+		$this->linkSectionStartString = "Ecouter également:";
+		$this->isSpaceAddedlinkSectionStartString = 0;
 		$this->linkSeparator = ",";
-		$this->isSpaceAddedlinkSeparator = 1;
+		$this->isSpaceAddedlinkSeparator = 0;
 	}
 	
 	public function testProcessArticleXLinksIntegrationAtPosLastLinkUnlinkRelink() {
@@ -71,7 +71,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 	
@@ -86,7 +86,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 	
@@ -101,7 +101,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 	
@@ -140,7 +140,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également</p>\n" .
+				"<p>Ecouter également:</p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 	
@@ -155,7 +155,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 	
@@ -170,7 +170,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 				"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" .
 				"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 				"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-				"<p>Ecouter également <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+				"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
 				"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 	
@@ -203,7 +203,7 @@ class XLinkArticlesProcessorLinkUnlinkRelinkLastPosOnDataWitha0SpaceChaTest exte
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\test_alternate_a0_space_char_link_unlink_relink.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\test_no_space_link_unlink_relink.xml' );
 	}
 }
 

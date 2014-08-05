@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname ( __FILE__ ) . '\XLinkArticlesTestBase.php';
+require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\xlink_articles_processor.php';
 
 class XLinkArticlesProcessorSkippedArticlesBugTest extends XLinkArticlesTestBase {
@@ -50,7 +50,7 @@ class XLinkArticlesProcessorSkippedArticlesBugTest extends XLinkArticlesTestBase
 	 * @return xml dataset
 	 */
 	protected function getDataSet() {
-		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\data\xlink_articles_skipped_article_bug_test_data.xml' );
+		return $this->createXMLDataSet ( dirname ( __FILE__ ) . '\..\data\xlink_articles_skipped_article_bug_test_data.xml' );
 	}
 }
 
