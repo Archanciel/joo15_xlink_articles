@@ -3,11 +3,11 @@
 
 	<property name="artifact.name" value="xlink_articles" />
 	<property name="joomla.root"
-		value="C:\Development\WorkPHP\www\plusconscient15_dev" />
+		value="D:\Development\web\htdocs\plusconscient15_dev" />
 	<property name="plg.content.folder" value="${joomla.root}\plugins\content" />
 	<property name="src" value="${plg.content.folder}\${artifact.name}" />
 	<property name="install.zip.file.dest"
-		value="C:\Development\WorkPHP\www\plusconscient15_int\attachments"
+		value="D:\Development\web\htdocs\plusconscient15_int\attachments"
 		override="true" />
 	<property name="version">1.61</property>
 
